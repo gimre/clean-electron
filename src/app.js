@@ -14,5 +14,6 @@ app
         cb( path.join( __dirname, '/templates/react.html' ) )
     } )
     new ReactWindow( 'HelloWorld' )
+    new ReactWindow( 'HelloWorld' )
 } )
 
