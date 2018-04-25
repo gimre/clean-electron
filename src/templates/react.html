@@ -1,0 +1,13 @@
+<!doctype html>
+<script>
+    const { remote: { app } } = require( 'electron' )
+    const path = require( 'path' )
+    const React = require( 'react' )
+    const ReactDOM = require( 'react-dom' )
+
+    const componentName = window.location.hostname
+    const root = document.documentElement
+    const Component = require( path.resolve( app.getAppPath( ), 'src', `./components/${ componentName }` ) )
+
+    ReactDOM.render( React.createElement( Component ), root )
+</script>

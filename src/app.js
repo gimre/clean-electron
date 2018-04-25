@@ -1,10 +1,9 @@
 
 const { app, BrowserWindow, protocol } = require( 'electron' )
 const path = require( 'path' )
+const ReactWindow = require( './utils/react-window' )
 
-const ReactWindow = require( './el/utils/react-window' )
-
-protocol.registerStandardSchemes( [ 'react' ] )
+protocol.registerStandardSchemes( [ 'react' ], { secure: true } )
 
 app
 .on('window-all-closed', ( ) => app.quit() )
@@ -12,7 +11,7 @@ app
     protocol.registerFileProtocol( 'react', ( req, cb ) => {
         const [ , componentName = '404' ] =
             req.url.match( /react:\/\/([^\/]+)\/?/ ) || [ ]
-        cb( path.join( __dirname, '/ui/components', `${ componentName }.js` ) )
+        cb( path.join( __dirname, '/templates/react.html' ) )
     } )
     new ReactWindow( 'HelloWorld' )
 } )
