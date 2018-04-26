@@ -1,7 +1,7 @@
 
 const { app, protocol } = require( 'electron' )
 const path = require( 'path' )
-const ReactWindow = require( './utils/react-window' )
+const windowService = require( './services/window')
 const store = require( './store' )
 
 protocol.registerStandardSchemes( [ 'react' ], { secure: true } )
@@ -14,14 +14,11 @@ app
             req.url.match( /react:\/\/([^\/]+)\/?/ ) || [ ]
         cb( path.join( __dirname, '/templates/react.html' ) )
     } )
-
-    new ReactWindow( 'HelloWorld' )
-    new ReactWindow( 'HelloWorld' )
-    new ReactWindow( 'HelloWorld' )
+    windowService.openReactWindow( 'HelloWorld' )
+    windowService.openReactWindow( 'HelloWorld' )
+    windowService.openReactWindow( 'HelloWorld' )
 } )
 
 store.subscribe( ( ) => {
-    for( const w of ReactWindow.getAllWindows( ) ) {
-        w.webContents.send( 'store', 'subscribe' )
-    }
+    windowService.broadcast( 'store', 'subscribe' )
 } )

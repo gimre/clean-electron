@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "start": "electron --js-flags='--harmony' ."
+    "start": "electron --js-flags='--harmony' .",
+    "build": "rollup src/app.js -o ./bundle.js --format='es'"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +16,8 @@
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"
+  },
+  "devDependencies": {
+    "rollup": "^0.58.2"
   }
 }
