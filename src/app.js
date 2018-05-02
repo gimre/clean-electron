@@ -14,9 +14,7 @@ app
             req.url.match( /react:\/\/([^\/]+)\/?/ ) || [ ]
         cb( path.join( __dirname, '/templates/react.html' ) )
     } )
-    windowService.openReactWindow( 'HelloWorld' )
-    windowService.openReactWindow( 'HelloWorld' )
-    windowService.openReactWindow( 'HelloWorld' )
+    windowService.openReactWindow( 'dashboard' )
 } )
 
 store.subscribe( ( ) => {
